@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script src="/res/jquery-3.2.1.min.js"></script>
+        <script src="/res/jquery.cookie.js"></script>
+        <script src="/js/main.js"></script>
+        <script>
+            function updateDatabaseValue(db, tableName, column, value, id, content){ 
+                $.ajax({
+                    data: 'db=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id + "&content="+ content,
+                    url: '/cms/modifyTableValue.php',
+                    method: 'POST', //  or GET
+                    success: function(msg) {alert(msg);}
+                });
+            }
+        </script>
+        <script>
+            function getDatabaseValue(db, tableName, column, value, id, completeFunction) { // SELECT column FROM db WHERE value = id 
+                $.ajax({
+                    data: 'db=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id,
+                    url: '/cms/getTableValue.php',
+                    method: 'POST', //  or GET
+                    success: function(msg) {completeFunction(msg);}
+                });
+            }              
+        </script>
+        <script>
+            function fillEditingArea() {
+                var pageName = $.cookie("editPageName");
+                if (pageName != null) {
+                     getDatabaseValue("Pages", pageName, "Content", "id", "1", fillText);
+                }
+                else{
+                    window.location.href = "index.html";
+                }
+            }
+        </script>
+        <script>
+            function fillText(msg) {
+                document.getElementById('editingArea').value = msg;
+            }
+        </script>
+        <script>
+            function saveClick() {
+                updateDatabaseValue("Pages", $.cookie("editPageName"), "Content", "id", "1", document.getElementById("editingArea").value);
+            }
+        </script>
+    </head>
+    <body onload="fillEditingArea()">
+        <textarea id='editingArea' rows="30", cols="125"> </textarea>
+        <button onclick='saveClick()'>Save</button>
+    </body>
+</html>

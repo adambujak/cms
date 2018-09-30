@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script src="/jquery-3.2.1.min.js"></script>
+        <script src="/jquery.cookie.js"></script>
+        <script src="/main.js"></script>
+        <script>
+            function login(username, password) {
+                $.ajax({
+                    data: 'username=' + username + "&password=" + password,
+                    url: '/login/login.php',
+                    method: 'POST', // or GET
+                    success: function(msg) {
+                        if (msg == 'Success!') {
+                            window.location.href = '';
+                        }
+                        else {alert(msg);}
+                    }
+                });
+            }
+        </script>
+        <script>
+            function submit() {
+                login(document.getElementById('username').value, document.getElementById('password').value);
+            }
+        </script>
+    </head>
+    <body>
+        Username:<br>
+        <input type="text" name="username" id="username"><br>
+        Password:<br>
+        <input type="password" name="password" id="password">
+        <button onclick="submit()">Login</button>
+    </body>
+</html>
