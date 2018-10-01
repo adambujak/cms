@@ -37,6 +37,7 @@ function isLoggedIn() {
     $sql = "SELECT identification FROM login WHERE id = 1";
     $result = runSQL($conn, $sql);
     $retid = getSQLQuery($result)[0];
+    closeConnection($conn);
     if ($id == $retid) return true;
     return false;
 }

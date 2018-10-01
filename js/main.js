@@ -52,3 +52,30 @@ function getDatabaseValue(db, tableName, column, value, id) { // SELECT column F
         success: function(msg) {return msg;}
     });
 }
+
+function getPageNames(dbName) {
+    $.ajax({
+        data: 'dbName=' + dbName,
+        url: '/cms/getPageNames.php',
+        method: 'POST', // or GET
+        success: function(msg) {
+            if (msg != "notlogged")
+                fillBody(makePageButtons(msg));
+            else {alert('You must be logged in to view this content!'); window.location.href = "/login";}
+        }
+    });
+}
+
+function fillBody(msg) { 
+    document.getElementById('body').innerHTML = document.getElementById('body').innerHTML+msg;
+}
+
+function makePageButtons(msg) { //formats string with all page names in it into buttons - make it look nicer.
+    var titles = msg.split('<br>');
+    var ret = "";
+    for (var i = 0; i < titles.length-1; i++) {
+        ret += "<button onclick=\"editPage(\'"+titles[i]+"\')\">"+titles[i]+"</button>";
+    }
+    return ret;
+}
+

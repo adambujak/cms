@@ -6,7 +6,7 @@
         <script>
             function updateDatabaseValue(db, tableName, column, value, id, content){ 
                 $.ajax({
-                    data: 'db=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id + "&content="+ content,
+                    data: 'dbname=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id + "&content="+ content,
                     url: '/cms/modifyTableValue.php',
                     method: 'POST', //  or GET
                     success: function(msg) {alert(msg);}
@@ -16,7 +16,7 @@
         <script>
             function getDatabaseValue(db, tableName, column, value, id, completeFunction) { // SELECT column FROM db WHERE value = id 
                 $.ajax({
-                    data: 'db=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id,
+                    data: 'dbname=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id,
                     url: '/cms/getTableValue.php',
                     method: 'POST', //  or GET
                     success: function(msg) {completeFunction(msg);}

@@ -2,28 +2,7 @@
     <head>
         <script src="/res/jquery-3.2.1.min.js"></script>
         <script src="/res/jquery.cookie.js"></script>
-        <script>
-            function getPageNames(dbName) {
-                $.ajax({
-                    data: 'dbName=' + dbName,
-                    url: '/cms/getPageNames.php',
-                    method: 'POST', // or GET
-                    success: function(msg) {
-                        fillBody(msg);
-                    }
-                });
-            }
-        </script>
-        <script>
-            function fillBody(msg) {
-                var titles = msg.split('<br>');
-                for (var i = 0; i < titles.length-1; i++) {
-                    var body = document.getElementById('body').innerHTML;
-                    body += "<button onclick=\"editPage(\'"+titles[i]+"\')\">"+titles[i]+"</button>";
-                    document.getElementById('body').innerHTML = body;
-                }
-            }
-        </script>
+        <script src="js/main.js"></script>        
         <script>
             function editPage(pageName) {
                 $.cookie("editPageName", pageName);
