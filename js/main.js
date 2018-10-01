@@ -53,29 +53,29 @@ function getDatabaseValue(db, tableName, column, value, id) { // SELECT column F
     });
 }
 
-function getPageNames(dbName) {
+
+function updateDatabaseValue(db, tableName, column, value, id, content){ 
     $.ajax({
-        data: 'dbName=' + dbName,
-        url: '/cms/getPageNames.php',
-        method: 'POST', // or GET
-        success: function(msg) {
-            if (msg != "notlogged")
-                fillBody(makePageButtons(msg));
-            else {alert('You must be logged in to view this content!'); window.location.href = "/login";}
-        }
+        data: 'dbname=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id + "&content="+ content,
+        url: '/cms/modifyTableValue.php',
+        method: 'POST', //  or GET
+        success: function(msg) {alert(msg);}
     });
 }
-
-function fillBody(msg) { 
-    document.getElementById('body').innerHTML = document.getElementById('body').innerHTML+msg;
-}
-
-function makePageButtons(msg) { //formats string with all page names in it into buttons - make it look nicer.
-    var titles = msg.split('<br>');
-    var ret = "";
-    for (var i = 0; i < titles.length-1; i++) {
-        ret += "<button onclick=\"editPage(\'"+titles[i]+"\')\">"+titles[i]+"</button>";
+function getDatabaseValue(db, tableName, column, value, id, completeFunction) { // SELECT column FROM db WHERE value = id 
+    $.ajax({
+        data: 'dbname=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id,
+        url: '/cms/getTableValue.php',
+        method: 'POST', //  or GET
+        success: function(msg) {completeFunction(msg);}
+    });
+}              
+function fillEditingArea() {
+    var pageName = $.cookie("editPageName");
+    if (pageName != null) {
+         getDatabaseValue("Pages", pageName, "Content", "id", "1", fillText);
     }
-    return ret;
+    else{
+        window.location.href = "index.html";
+    }
 }
-

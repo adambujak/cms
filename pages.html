@@ -2,7 +2,9 @@
     <head>
         <script src="/res/jquery-3.2.1.min.js"></script>
         <script src="/res/jquery.cookie.js"></script>
-        <script src="js/main.js"></script>        
+        <script src="js/main.js"></script>    
+        <script src="js/pages.js"></script>    
+        <link rel="stylesheet" href="/css/styles.css">
         <script>
             function editPage(pageName) {
                 $.cookie("editPageName", pageName);
@@ -11,6 +13,16 @@
         </script>
     </head>
     
-    <body id='body' onload="getPageNames('Pages')">
+    <body id='body'>
+        <br><br>
+        <button id="myBtn" onclick="addPageClickHandler()">Add Page</button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+            <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+        </div>
     </body>
 </html>

@@ -4,37 +4,6 @@
         <script src="/res/jquery.cookie.js"></script>
         <script src="/js/main.js"></script>
         <script>
-            function updateDatabaseValue(db, tableName, column, value, id, content){ 
-                $.ajax({
-                    data: 'dbname=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id + "&content="+ content,
-                    url: '/cms/modifyTableValue.php',
-                    method: 'POST', //  or GET
-                    success: function(msg) {alert(msg);}
-                });
-            }
-        </script>
-        <script>
-            function getDatabaseValue(db, tableName, column, value, id, completeFunction) { // SELECT column FROM db WHERE value = id 
-                $.ajax({
-                    data: 'dbname=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id,
-                    url: '/cms/getTableValue.php',
-                    method: 'POST', //  or GET
-                    success: function(msg) {completeFunction(msg);}
-                });
-            }              
-        </script>
-        <script>
-            function fillEditingArea() {
-                var pageName = $.cookie("editPageName");
-                if (pageName != null) {
-                     getDatabaseValue("Pages", pageName, "Content", "id", "1", fillText);
-                }
-                else{
-                    window.location.href = "index.html";
-                }
-            }
-        </script>
-        <script>
             function fillText(msg) {
                 document.getElementById('editingArea').value = msg;
             }
@@ -42,6 +11,7 @@
         <script>
             function saveClick() {
                 updateDatabaseValue("Pages", $.cookie("editPageName"), "Content", "id", "1", document.getElementById("editingArea").value);
+                window.location.href = "/pages.html"
             }
         </script>
     </head>
