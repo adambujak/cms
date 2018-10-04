@@ -1,27 +1,25 @@
+<!DOCTYPE html>
 <html>
     <head>
         <script src="/res/jquery-3.2.1.min.js"></script>
         <script src="/res/jquery.cookie.js"></script>
-        <script src="js/main.js"></script>    
-        <script src="js/pages.js"></script>    
+        <script src="/js/pages.js"></script>    
         <link rel="stylesheet" href="/css/styles.css">
-        <script>
-            function editPage(pageName) {
-                $.cookie("editPageName", pageName);
-                window.location.href = "editPage.html";
-            }
-        </script>
     </head>
     
-    <body id='body'>
-        <br><br>
-        <button id="myBtn" onclick="addPageClickHandler()">Add Page</button>
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
+    <body>
+        <button id="newPageButton" class="center">Add New Page</button>
+        <div id="newPageForm" class="modal center">
+          <div class="modal-content center">
             <span class="close">&times;</span>
-                <p>Some text in the Modal..</p>
+            <p>Make New Page</p>
+              <form action="/action_page.php">
+                  Page Name:<br>
+                  <input type="text" id="name" name="pageTitle"><br>
+                  Page Title:<br>
+                  <input type="text" id = "title" name="pageTitle"><br><br>
+                  <input type="submit" value="Submit">
+                </form>
             </div>
         </div>
     </body>

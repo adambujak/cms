@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <script src="/res/jquery-3.2.1.min.js"></script>
@@ -11,7 +12,7 @@
         <script>
             function saveClick() {
                 updateDatabaseValue("Pages", $.cookie("editPageName"), "Content", "id", "1", document.getElementById("editingArea").value);
-                window.location.href = "/pages.html"
+                window.location.href = "/pages.html";
             }
         </script>
     </head>

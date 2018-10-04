@@ -1,5 +1,3 @@
-var modal, btn, span;
-
 function getPageNames(dbName) {
     $.ajax({
         data: 'dbName=' + dbName,
@@ -12,48 +10,47 @@ function getPageNames(dbName) {
         }
     });
 }
-function fillBody(msg, prepend) { //prepend true if you want to prepend, otherwise, append
-    if (prepend) 
-        document.getElementById('body').innerHTML = msg + document.getElementById('body').innerHTML;
-    else 
-        document.getElementById('body').innerHTML = document.getElementById('body').innerHTML+msg;
+function fillBody(elementArray, prepend) { //prepend true if you want to prepend, otherwise, append
+    var body = document.getElementsByTagName('body')[0];
+    var lineBreak = document.createElement("BR");
+    for (var i = 0; i < elementArray.length; i++) {
+        if (prepend) {
+            body.prepend(lineBreak)
+            body.prepend(elementArray[i]);
+        }
+        else{
+            body.append(lineBreak);
+            body.appendChild(elementArray[i]);      
+        }
+    }
 }
-
 function makePageButtons(msg) { //formats string with all page names in it into buttons - TODO: make it look nicer.
     var titles = msg.split('<br>');
-    var ret = "";
+    var ret = new Array(titles.length-1);
     for (var i = 0; i < titles.length-1; i++) {
-        ret += "<button onclick=\"editPage(\'"+titles[i]+"\')\">"+titles[i]+"</button>";
+        var node = document.createElement("BUTTON");                 // Create a button
+        var textnode = document.createTextNode(titles[i]);         // Create a text node
+        node.appendChild(textnode);    
+        node.addEventListener("click", function () {pageClick(node.innerHTML)});
+        ret[i] = node;
     }
     return ret;
 }
+function pageClick(page) {
+    $.cookie("editPageName", page);
+    window.location.href = "editPage.html";
+}
 window.onload = function () {
     getPageNames("Pages");
-    setUpPopup();
-}
-function addPageClickHandler() {
-    alert(modal.innerHTML);
-     modal.style.display = "block";
-    alert('asd');
-}
-function setUpPopup() {
-    
-    modal = document.getElementById('myModal');
-    
-    // Get the button that opens the modal
-    btn = document.getElementById("myBtn");
-  
-    alert(document.getElementById("myBtn"));
-    // Get the <span> element that closes the modal
-    span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    // When the user clicks on <span> (x), close the modal
+    var modal = document.getElementById('newPageForm');
+    var btn = document.getElementById("newPageButton");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
     span.onclick = function() {
         modal.style.display = "none";
     }
-
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";

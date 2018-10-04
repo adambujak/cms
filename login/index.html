@@ -1,13 +1,14 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <script src="/jquery-3.2.1.min.js"></script>
-        <script src="/jquery.cookie.js"></script>
-        <script src="/main.js"></script>
+        <script src="/res/jquery-3.2.1.min.js"></script>
+        <script src="/res/jquery.cookie.js"></script>
+        <script src="/js/main.js"></script>
         <script>
             function login(username, password) {
                 $.ajax({
                     data: 'username=' + username + "&password=" + password,
-                    url: '/login/login.php',
+                    url: '/cms/login.php',
                     method: 'POST', // or GET
                     success: function(msg) {
                         if (msg == 'Success!') {
