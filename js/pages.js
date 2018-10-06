@@ -1,6 +1,6 @@
 function getPageNames(dbName) {
     $.ajax({
-        data: 'dbName=' + dbName,
+        data: null,
         url: '/cms/getPageNames.php',
         method: 'POST', // or GET
         success: function(msg) {
@@ -55,5 +55,26 @@ window.onload = function () {
         if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
+}
+function makeNewPage() {
+    var name = document.getElementById('name').value;
+    var title = document.getElementById('title').value;
+    if (name != null && title != null && name != "" && title != "") {
+        $.ajax({
+        data: "pageName="+name+"&title="+title,
+        url: '/cms/makeNewPage.php',
+        method: 'POST', // or GET
+        success: function(msg) {
+            if (msg != "notlogged"){
+                alert(msg);
+                window.location.href = "/pages.html";
+            }
+            else {alert('You must be logged in to view this content!'); window.location.href = "/login";}
+        }
+    });
+    }
+    else { 
+        alert("Please Enter Valid Values!")
     }
 }
