@@ -31,8 +31,9 @@ function makePageButtons(msg) { //formats string with all page names in it into 
         var node = document.createElement("BUTTON");                 // Create a button
         var textnode = document.createTextNode(titles[i]);         // Create a text node
         node.appendChild(textnode);    
-        node.addEventListener("click", function () {pageClick(node.innerHTML)});
+        node.addEventListener("click", function () {pageClick(this.innerHTML)});
         ret[i] = node;
+        node = null;
     }
     return ret;
 }

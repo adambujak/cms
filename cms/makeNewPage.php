@@ -8,8 +8,6 @@ if (isLoggedIn()) {
     $sql = "CREATE TABLE $pageName (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
         Content TEXT NOT NULL,
-        Header TEXT NOT NULL,
-        Footer TEXT NOT NULL,
         Title varchar(30)
     );";   
     $result = runSQL($conn, $sql);

@@ -38,11 +38,13 @@
         </script>
         <script>
             function foundPage(page) {
+                
                 function fillPageBody(elements) {
                     document.getElementsByTagName("body")[0].innerHTML = elements;
                 }
-                getDatabaseValue("Pages", page, "Content", "id", "1", fillPageBody);//function getDatabaseValue(db, tableName, column, value, id, completeFunction) { // SELECT column FROM db WHERE value = id 
                 
+                getDatabaseValue("Pages", page, "Content", "id", "1", fillPageBody);//function getDatabaseValue(db, tableName, column, value, id, completeFunction) { // SELECT column FROM db WHERE value = id 
+        
             }
         </script>
         <script>
@@ -51,12 +53,10 @@
             }
         </script>
     </head>
-    <header>
-    </header>
+   
     <body onload="getTitle()">
         
     </body>
-    <footer>
-    </footer>
+   
     
 </html>
