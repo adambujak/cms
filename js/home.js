@@ -1,6 +1,6 @@
-function fadeWelcomeInAndOut(){
+function fadeWelcomeInAndOut(){ //fades welcome text in and out
     var element = document.getElementById("welcome");
-    fade(element, 1500, "out", function(){ 
+    fade(element, 1500, "out", function(){  
         element.textContent = "Take a look around.";
         //element.className = "content" //issue!
         fade(element, 1500, "in");
@@ -16,7 +16,7 @@ function fade(element, time, inOrOut, funcToExecuteOnEnd){
     function fade() {
         opacity += opacityIncrement;
         element.style.opacity = "" + opacity;
-        if (opacity <= 0){ 
+        if (opacity <= 0){
             funcToExecuteOnEnd();
             clearInterval(timer);
         }
@@ -27,5 +27,5 @@ window.onload = function onloadFunc() {
    fadeWelcomeInAndOut();
 };
 function scrollToAbout() {
-    $("html, body").animate({ scrollTop: $("#about-div").offset().top+Number($("#about-div").css("padding-top").substring(0,2))}, 750); 
+    $("html, body").animate({ scrollTop: $("#about-div").offset().top+Number($("#about-div").css("padding-top").substring(0,2))}, 750);
 }

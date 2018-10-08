@@ -3,11 +3,12 @@ require "functions.php";
 if (isLoggedIn()) {
     //get all the required variables from POST request.
     $dbname = $_POST["dbname"];
+    if ($dbname == "pageDB") $dbname = pagesDB; //this is so I don't have to put the actual db name into the js
     $tableName = $_POST["tableName"];
     $column = $_POST["column"];
     $value = $_POST["value"];
     $id = $_POST["id"];
-    $content = $_POST["content"]; 
+    $content = $_POST["content"];
     $mysqli = new mysqli(servername, username, password, $dbname); // connect to database
     if (mysqli_connect_errno()) { //if error occurs
         printf("Connect failed: %s\n", mysqli_connect_error());
