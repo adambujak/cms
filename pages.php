@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+    require "cms/functions.php";
+    if (!isLoggedIn()) {
+        die(); // if they aren't logged in, they have no business being here.
+    }
+?>
 <html>
     <head>
         <script src="/res/jquery-3.2.1.min.js"></script>
