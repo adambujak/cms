@@ -1,62 +1,9 @@
+<!DOCTYPE html>
 <html>
     <head> 
         <script src="/res/jquery-3.2.1.min.js"></script>
-        <script src="/js/main.js"></script>
-        <link rel="stylesheet" href="/css/styles.css">
-        <script>
-            function getTitle() {
-                var url = window.location.href; //url in the form http://domainname.com/whatevertheytypedin
-                url = url.split("/"); //make it into an array splitting by /
-                url = url[3];  // url = whatevertheytypedin 
-                $.ajax({
-                    data: null,
-                    url: '/cms/getPageNames2.php',
-                    method: 'POST', // or GET
-                    success: function(msg) {
-                         compareTitles(msg, url);   
-                    }
-                });
-                
-            }
-        </script>
-        <script>
-            function compareTitles(pages, url) {
-                pages = pages.split("<br>");
-                var found = false;
-                var pageName;
-                for (var i = 0; i < pages.length-1; i++) {
-                   
-                    if (url.toLowerCase() === pages[i].toLowerCase()) {
-                        found = true;
-                        pageName = pages[i];
-                        break;
-                    }
-                }
-                if (found) foundPage(pageName);
-                else pageNotFound();
-            }
-        </script>
-        <script>
-            function foundPage(page) {
-                
-                function fillPageBody(elements) {
-                    document.getElementsByTagName("body")[0].innerHTML = elements;
-                }
-                
-                getDatabaseValue("Pages", page, "Content", "id", "1", fillPageBody);//function getDatabaseValue(db, tableName, column, value, id, completeFunction) { // SELECT column FROM db WHERE value = id 
-        
-            }
-        </script>
-        <script>
-            function pageNotFound() {
-                document.getElementsByTagName('body')[0].append('Not Found!')
-            }
-        </script>
+        <script src="/js/standard.js"></script>
     </head>
-   
     <body onload="getTitle()">
-        
     </body>
-   
-    
 </html>

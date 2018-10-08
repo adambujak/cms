@@ -7,10 +7,13 @@
         <link rel="stylesheet" href="/css/editPage.css">
     </head>
     <body onload="fillEditingArea()">
+        <p>Title:</p>
+        <input id='title'> </input>
         <p>Head:</p>
         <textarea id='headTextArea' rows="10", cols="125"> </textarea>
         <p>Body:</p>
         <textarea id='bodyTextArea' rows="30", cols="125"> </textarea>  
+        <button onclick='deletePage()'>Delete Page</button>
         <button onclick='saveClick()'>Save</button>
     </body>
 </html>

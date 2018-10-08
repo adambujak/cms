@@ -48,7 +48,7 @@ function getDatabaseValue(db, tableName, column, value, id, completeFunction) { 
 function fillEditingArea() {
     var pageName = $.cookie("editPageName");
     if (pageName != null) {
-         getDatabaseValue("Pages", pageName, "Content", "id", "1", fillText);
+         getDatabaseValue("adambuja_Pages", pageName, "Content", "id", "1", fillText);
     }
     else{
         window.location.href = "index.html";

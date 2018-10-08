@@ -2,7 +2,7 @@
 require "functions.php";
 $userid = $_POST["username"];
 $pass = $_POST["password"];
-$dbname = "credentials";
+$dbname = "adambuja_credentials";
 $conn = connectToDatabase($dbname);
 $sql = "SELECT username FROM login WHERE id = 1;";
 $result = runSQL($conn, $sql);

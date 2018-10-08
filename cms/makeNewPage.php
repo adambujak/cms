@@ -1,20 +1,20 @@
 <?php
 require "functions.php";
 if (isLoggedIn()) {
-    $dbname = "Pages";
+    $dbname = "adambuja_Pages";
     $pageName = $_POST["pageName"];
     $title = $_POST["title"];
     $conn = connectToDatabase($dbname);
     $sql = "CREATE TABLE $pageName (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
         Content TEXT NOT NULL,
+        Head TEXT,
         Title varchar(30)
     );";   
     $result = runSQL($conn, $sql);
-    $sql = "INSERT INTO $pageName(Content, Title) VALUES ('', '$title')";  
+    $sql = "INSERT INTO $pageName(Content, Head, Title) VALUES ('', '', '$title')";  
     $result = runSQL($conn, $sql);
     closeConnection($conn);   
-    mkdir($pageName);
     echo "Page Created!";
 }
 else echo "notlogged";

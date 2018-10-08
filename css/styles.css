@@ -59,7 +59,31 @@
     padding-left: 16px;
     padding-right: 16px;
 }
-
+.smallRedButton { 
+    position: relative;
+    width: 110px;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 6px;
+    background-color: rgb(150, 80,0);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 10px;
+    padding: 12px;
+    transition: all 0.25s;
+    cursor: pointer;
+    text-align: center;
+}
+.smallRedButton:hover{
+    background-color: transparent;
+    color: rgb(150, 25,0);
+    border: 5px;
+    border-radius: 6px;
+    border-color: rgb(150, 25,0);
+    padding-left: 16px;
+    padding-right: 16px;
+}
 .form-style-1 {
     margin:10px auto;
     margin-top: 0px;

@@ -17,7 +17,9 @@ function getDatabaseValue(db, tableName, column, value, id, completeFunction, fo
 function fillEditingArea() {
     var pageName = $.cookie("editPageName");
     if (pageName != null) {
-         getDatabaseValue("Pages", pageName, "Content", "id", "1", fillText, document.getElementById('bodyTextArea'));
+        getDatabaseValue("adambuja_Pages", pageName, "Title", "id", "1", fillText, document.getElementById('title'));
+        getDatabaseValue("adambuja_Pages", pageName, "Head", "id", "1", fillText, document.getElementById('headTextArea'));
+        getDatabaseValue("adambuja_Pages", pageName, "Content", "id", "1", fillText, document.getElementById('bodyTextArea'));
     }
     else{
         window.location.href = "index.html";
@@ -28,8 +30,18 @@ function fillText(element, msg) {
 }
 
 function saveClick() {
-
-    updateDatabaseValue("Pages", $.cookie("editPageName"), "Content", "id", "1", document.getElementById("bodyTextArea").value);
-    //updateDatabaseValue("Pages", $.cookie("editPageName"), "Content", "id", "1", document.getElementById("editingArea").value);// -> Head
+    updateDatabaseValue("adambuja_Pages", $.cookie("editPageName"), "Title", "id", "1", document.getElementById("title").value);
+    updateDatabaseValue("adambuja_Pages", $.cookie("editPageName"), "Content", "id", "1", document.getElementById("bodyTextArea").value);
+    updateDatabaseValue("adambuja_Pages", $.cookie("editPageName"), "Head", "id", "1", document.getElementById("headTextArea").value);
     window.location.href = "/pages.html";
+}
+function deletePage() {
+    if (confirm("Are you Sure? You can't recover this!")) {
+         $.ajax({
+            data: 'tableName=' + $.cookie("editPageName"),
+            url: '/cms/deletePage.php',
+            method: 'POST', //  or GET
+            success: function(msg) {alert(msg);window.location.href = "/pages.html";}
+        });
+    } 
 }

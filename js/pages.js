@@ -31,6 +31,7 @@ function makePageButtons(msg) { //formats string with all page names in it into 
         var node = document.createElement("BUTTON");                 // Create a button
         var textnode = document.createTextNode(titles[i]);         // Create a text node
         node.appendChild(textnode);    
+        node.classList.add('smallRedButton');
         node.addEventListener("click", function () {pageClick(this.innerHTML)});
         ret[i] = node;
         node = null;
@@ -42,7 +43,7 @@ function pageClick(page) {
     window.location.href = "editPage.html";
 }
 window.onload = function () {
-    getPageNames("Pages");
+    getPageNames("adambuja_Pages");
     var modal = document.getElementById('newPageForm');
     var btn = document.getElementById("newPageButton");
     var span = document.getElementsByClassName("close")[0];

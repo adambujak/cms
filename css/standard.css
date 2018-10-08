@@ -1,0 +1,239 @@
+@import
+    url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,900');
+
+html, body{
+    margin:0;
+    height:100%;
+    width: 100%;
+    color: black;
+    width: 100%;    
+    font-family: 'Open Sans', sans-serif;
+}
+
+.header{
+    position: absolute;
+    margin:1em;
+    opacity:0.5;
+    font-weight:300;
+    font-size: 1.5em;
+    opacity: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: #E1EFE9;
+    line-height: 70%;
+}
+.intro{
+    height: 100%;
+    width: 100%;
+    margin:auto;
+    background: url("/src/intro.jpg");
+    display: table;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.btn{
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.35em;
+    font font-weight: 500;
+    color: #25242a;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: solid;
+    border-radius: 0.35em;
+    padding-left: 0.35em;
+    padding-right: 0.35em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+}
+.btn:hover{
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.35em;
+    font font-weight: 500;
+    transition: all 0.5s;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: solid;
+    border-radius: 0.35em;
+    padding-left: 0.35em;
+    padding-right: 0.35em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    color: #E1EFE9;
+    border-color: #E1EFE9;
+}
+.profile{
+    float: left;
+    max-height: 15em;
+    padding-bottom: 0.5em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-left: 1em;
+}
+.intro .inner {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    max-width: none;
+}
+/*main intro text*/
+.content{
+    max-width: 100%;
+    margin:  0 auto;
+    text-align: center;
+    padding-bottom: 28%;
+}
+.content h1{
+    font-weight:300;
+    font-size: 4.5em;
+    font-family: 'Open Sans', sans-serif;
+    color: #E1EFE9;
+    line-height: 70%;
+}
+.content2{
+    max-width: 750px;
+    margin:  0 auto;
+    text-align: center;
+    padding-bottom: 28%;
+}
+.content2 h1{
+    font-weight:300;
+    font-size: 4.5em;
+    font-family: 'Open Sans', sans-serif;
+    color: #E1EFE9;
+    line-height: 125%;
+}
+@media only screen and (max-width: 47rem ){ /*mobile*/
+    .content{
+        max-width: 600px;
+        margin:  0 auto;
+        text-align: center;
+        padding-bottom: 28%;
+    }
+    .content h1{
+        font-weight:200;
+        font-size: 2.25em;
+        font-family: 'Open Sans', sans-serif;
+        color: #E1EFE9;
+        line-height: 125%;
+    }
+    .content2{
+        max-width: 750px;
+        margin:  0 auto;
+        text-align: center;
+        padding-bottom: 28%;
+    }
+    .content2 h1{
+        font-weight:200;
+        font-size: 2em;
+        font-family: 'Open Sans', sans-serif;
+        color: #E1EFE9;
+        line-height: 125%;
+    }
+    .btn{
+        font-family: "Open Sans", sans-serif;
+        font-size: 1em;
+        font font-weight: 400;
+        color: #25242a;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        border-radius: 0.35em;
+        padding-left: 0.35em;
+        padding-right: 0.35em;
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+        transition: all 0.5s;
+    }
+    .btn:hover{
+        font-family: "Open Sans", sans-serif;
+        font-size: 1em;
+        font font-weight: 400;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        color: #E1EFE9;
+        border-color: #E1EFE9;
+        border-radius: 0.35em;
+        padding-left: 0.35em;
+        padding-right: 0.35em;
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+    }
+}
+@media only screen and (min-width: 95rem ){ /*bigboy screen*/
+    .content{
+        max-width: 75rem;
+        margin:  0 auto;
+        text-align: center;
+        padding-bottom: 12%; /*this might fuck shit up*/
+    }
+    .content h1{
+        font-weight:200;
+        font-size: 4.5em;
+        font-family: 'Open Sans', sans-serif;
+        color: #E1EFE9;
+        line-height: 125%;
+    }
+    .content2{
+        max-width: 750px;
+        margin:  0 auto;
+        text-align: center;
+        padding-bottom: 12%; /*this too*/
+    }
+    .content2 h1{
+        font-weight:200;
+        font-size: 5em;
+        font-family: 'Open Sans', sans-serif;
+        color: #E1EFE9;
+        line-height: 125%;
+    }
+    .btn{
+        font-family: "Open Sans", sans-serif;
+        font-size: 1.35em;
+        font font-weight: 400;
+        color: #25242a;
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        border-radius: 0.5em;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+        transition: all 0.5s;
+    }
+    .btn:hover{
+        text-decoration: none;
+        text-transform: uppercase;
+        border: solid;
+        color: #E1EFE9;
+        border-color: #E1EFE9;
+    }
+}
+/*to here*/
+.main{ /*main body text*/
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    padding: 12em;
+    line-height: 3em;
+    padding-top: 0.01em;
+}
+@media only screen and (max-width: 45rem ){ /*mobile*/
+    .main{
+        font-family: 'Open Sans', sans-serif;
+        text-align: left;
+        padding: 1em;
+        line-height: 3em;
+        padding-top: 0.01em;
+    }
+}
+@media only screen and (min-width: 90rem ){ /*bigboy screen*/
+    .main{
+        font-family: 'Open Sans', sans-serif;
+        text-align: left;
+        padding: 13em;
+        line-height: 3em;
+        padding-top: 0.01em;
+    }
+}
