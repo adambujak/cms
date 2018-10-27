@@ -1,4 +1,5 @@
 function updateDatabaseValue(db, tableName, column, value, id, content){
+    content = encodeURIComponent('content');
     $.ajax({
         data: 'dbname=' + db + '&tableName=' + tableName + "&column=" + column + "&value=" + value + "&id=" + id + "&content="+ content,
         url: '/cms/modifyTableValue.php',

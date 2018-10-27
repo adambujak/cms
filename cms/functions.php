@@ -71,7 +71,7 @@ function currentPath( $trim_query_string = false ) { //gets current path on webs
         return $path[2];
     }
 }
-function getValue($column, $page, $conn){  // column-> which field to get from db page -> page name to get field for. conn-> mysqli connection to db so we don't have to reconnect.
+function getValue($column, $page, $conn) {  // column-> which field to get from db page -> page name to get field for. conn-> mysqli connection to db so we don't have to reconnect.
     $sql = "SELECT $column FROM $page WHERE id = 1";
     $result = runSQL($conn, $sql);
     $ret = getSQLQuery($result);
@@ -101,10 +101,14 @@ function searchForPage($page) {
         $i++;
     }
     if ($found) {
+        if ($pageNames[$i][1] == "_"){ // for invisible pages
+            return null;
+        }
         return $pageNames[$i];
-    } return null;
+    } 
+    return null;
 }
-function fillPage($page){
+function fillPage($page) {
     $conn = connectToDatabase(pagesDB);
     echo "<head>";// make sure to add the following to the head: <script src="/js/standard.js"></script> <link rel="stylesheet" href="/css/standard.css">
     echo getHeadValue($page, $conn);
@@ -115,6 +119,11 @@ function fillPage($page){
     echo "<body>";
     echo getBodyValue($page, $conn);
     echo "</body>";
+    closeConnection($conn);   
+}
+function getProjectContent($page) {
+    $conn = connectToDatabase(pagesDB);
+    echo getBodyValue($page, $conn);
     closeConnection($conn);   
 }
 ?>

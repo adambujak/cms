@@ -14,7 +14,7 @@ if (isLoggedIn()) {
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     }
-    if ($stmt = $mysqli->prepare("UPDATE $tableName SET $column = ? WHERE $id = $value")) {  // this is a prepared statement that prevents from SQL injection issues, and also allows me to have whatever symbols I want in my articles
+    if ($stmt = $mysqli->prepare("set define off; Begin UPDATE $tableName SET $column = ? WHERE $id = $value; End;")) {  // this is a prepared statement that prevents from SQL injection issues, and also allows me to have whatever symbols I want in my articles
         $stmt->bind_param("s", $content); // binds content to the query where there are ?s the "s" tells it that it's a string. for multiple values just add more.. for three string variables make it bind_params("sss", v1, v2, v3)
         $stmt->execute();
         $stmt->fetch();
